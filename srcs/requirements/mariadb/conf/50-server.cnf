@@ -1,0 +1,6 @@
+[mysqld]
+datadir = /var/lib/mysql
+socket = /run/mysqld/mysqld.sock 
+bin_adress=*
+port = 3306
+usr = mysql

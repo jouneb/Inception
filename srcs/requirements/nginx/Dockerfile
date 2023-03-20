@@ -10,3 +10,6 @@ RUN mkdir -p /var/run/nginx
 #cree un dossier contentant les fichiers de config de NGINX
 COPY conf/nginx.conf /etc/nginx/nginx.conf  
 #le copy va surement devoir etre change ? 
+RUN chmod 755 /var/www/html
+RUN chown -R www-data /var/www/html
+CMD [ "nginx", "-g", "daemon off;"]
