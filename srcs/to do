@@ -1,0 +1,3 @@
+pas mal de trucs a faire enconre sur wordpres notammnet sur le fichier auto config, donc a revoir
+j'ai appe aussi a un momet letape de modifieir le fichier de config de ph en ne mettant ni clear_env = no ni listen=wordpress:9000
+donc peut etre a modifier.
