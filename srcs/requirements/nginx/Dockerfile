@@ -10,6 +10,6 @@ RUN openssl req -x509 -nodes -out /etc/nginx/ssl/inception.crt -keyout /etc/ngin
 #cree la cle et le certificat TSL, va se faire automatiquement 
 #RUN mkdir -p /var/run/nginx
 #cree un dossier contentant les fichiers de config de NGINX
-COPY conf/config /etc/nginx/sites-available  
+COPY conf/config /etc/nginx/sites-available 
 CMD [ "nginx", "-g", "daemon off;"]
 #ca lance nginx

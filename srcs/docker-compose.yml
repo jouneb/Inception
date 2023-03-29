@@ -1,0 +1,67 @@
+version: '3.9'
+
+services:
+  mariadb:
+    container_name: mariadb
+    networks:
+      - inception        #a quel network il appartient.
+    build:
+      context: requirements/mariadb   #on lui dit ou est le Dockerfile
+      dockerfile: Dockerfile
+    env_file: .env
+    volumes:
+      - mariadb:/var/lib/mysql
+    restart: unless-stopped
+    expose:
+     - "3306"
+
+  nginx:
+    container_name: nginx
+    volumes:
+      - wordpress:/var/www/wordpress
+    networks:
+      - inception
+    depends_on:
+      - wordpress
+    build:
+      context: requirements/nginx
+      dockerfile: Dockerfile
+    env_file: .env
+    ports:
+      - "443:443"
+    restart: on-failure  #le container redememarre que si ca crash
+
+  wordpress:
+    container_name: wordpress
+    env_file: .env
+    volumes:
+      - wordpress:/var/wwww/wordpress
+    networks:
+      - inception
+    build:
+      context: requirements/wordpress
+      dockerfile: Dockerfile
+    depends_on:
+      - mariadb  #on demarre wordpress useuelemnt apres mariadb sinn on peut pas config la base de donnee
+    restart: on-failure
+    expose:
+      - "9000"
+
+volumes:
+  wordpress:
+    driver: local  #on stock le volume en local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '/home/jaja/data/wordpress'
+  mariadb:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '/home/jaja/data/mariadb'
+
+networks:
+  inception:
+    driver: bridge    #dit a docker d'installer automatiquement des egles qui permettent aux 3 containers de communiquer en bridge.
+  
