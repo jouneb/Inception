@@ -20,4 +20,4 @@ RUN mv wp-cli.phar /usr/local/bin/wp
 COPY conf/auto-config.sh /var/www/
 WORKDIR /var/www/wordpress
 
-ENTRYPOINT ["sh", "/var/www/auto-config.sh"]
+CMD ["sh", "/var/www/auto-config.sh"]
