@@ -13,7 +13,7 @@ server {
     }
 
     location ~ \.php$ {  #pour toutes les requetes php on va les traiter via FastCGI
-        try files $uri =404;
+        try_files $uri =404;
         fastcgi_split_path_info ^(.+\.php)(/.+)$;  #pour separer les infos genre si on a http://www.emaple.com/index.php/page1 index.php sera le nom de fichier php et page 1 le chemin d'information
         fastcgi_pass wordpress:9000;  #renvoyer les requetes php sur le port 9000.
         fastcgi_index index.php;        #si aucun nom n'est specifie dans l'url on utilise index.php comme nom par defaut.

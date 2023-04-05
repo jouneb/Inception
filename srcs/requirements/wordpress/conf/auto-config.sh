@@ -1,7 +1,7 @@
 sleep 10
 
 #on cree le dosier /run/php s'il n'existe pas pour permettre a php-fpm de fonctionner
-if [ ! -f "/run/php" ]
+if [ ! -d "/run/php" ]
 then 
     mkdir /run/php
 fi

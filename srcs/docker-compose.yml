@@ -63,5 +63,6 @@ volumes:
 
 networks:
   inception:
-    driver: bridge    #dit a docker d'installer automatiquement des egles qui permettent aux 3 containers de communiquer en bridge.
+    driver: bridge   
+    #dit a docker d'installer automatiquement des egles qui permettent aux 3 containers de communiquer en bridge.
   
