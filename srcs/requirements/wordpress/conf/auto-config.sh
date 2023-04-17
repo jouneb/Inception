@@ -2,7 +2,7 @@ sleep 10
 
 #on cree le dosier /run/php s'il n'existe pas pour permettre a php-fpm de fonctionner
 if [ ! -d "/run/php" ]
-then 
+then
     mkdir /run/php
 fi
 
@@ -11,19 +11,19 @@ then
     echo "wp-config-sample.php already exist..."
 else
     wp core --allow-root download
-    #on configure wp et reation du wp-config.php
+    #on configure wp et creation du wp-config.php
     wp config create --allow-root \
                      --dbname=$SQL_DATABASE \
                      --dbuser=$SQL_USER \
                      --dbpass=$SQL_PASSWORD \
-                     --dbhost=mariadb:3306
+                     --dbhost=mariadb:3306 --path=/var/www/wordpress
    # on config la deuxieme page
     wp core install --allow-root \
                     --url=jbouyer.42.fr/wordpress \
                     --title=Inception \
                     --admin_user=$ADMIN_USER \
                     --admin_password=$ADMIN_PASSWORD \
-                    --admin_email==$ADMIN_EMAIL 
+                    --admin_email=$ADMIN_EMAIL 
                     
     #on ajoute un user
 	wp user create $USER_NAME $USER_EMAIL \

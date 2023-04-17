@@ -15,37 +15,37 @@ services:
     expose:
      - "3306"
 
-  nginx:
-    container_name: nginx
-    volumes:
-      - wordpress:/var/www/wordpress
-    networks:
-      - inception
-    depends_on:
-      - wordpress
-    build:
-      context: requirements/nginx
-      dockerfile: Dockerfile
-    env_file: .env
-    ports:
-      - "443:443"
-    restart: on-failure  #le container redememarre que si ca crash
+  # nginx:
+  #   container_name: nginx
+  #   volumes:
+  #     - wordpress:/var/www/wordpress
+  #   networks:
+  #     - inception
+  #   depends_on:
+  #     - wordpress
+  #   build:
+  #     context: requirements/nginx
+  #     dockerfile: Dockerfile
+  #   env_file: .env
+  #   ports:
+  #     - "443:443"
+  #   restart: on-failure  #le container redememarre que si ca crash
 
-  wordpress:
-    container_name: wordpress
-    env_file: .env
-    volumes:
-      - wordpress:/var/wwww/wordpress
-    networks:
-      - inception
-    build:
-      context: requirements/wordpress
-      dockerfile: Dockerfile
-    depends_on:
-      - mariadb  #on demarre wordpress useuelemnt apres mariadb sinn on peut pas config la base de donnee
-    restart: on-failure
-    expose:
-      - "9000"
+  # wordpress:
+  #   container_name: wordpress
+  #   env_file: .env
+  #   volumes:
+  #     - wordpress:/var/wwww/wordpress
+  #   networks:
+  #     - inception
+  #   build:
+  #     context: requirements/wordpress
+  #     dockerfile: Dockerfile
+  #   depends_on:
+  #     - mariadb  #on demarre wordpress useuelemnt apres mariadb sinn on peut pas config la base de donnee
+  #   restart: on-failure
+  #   expose:
+  #     - "9000"
 
 volumes:
   wordpress:
