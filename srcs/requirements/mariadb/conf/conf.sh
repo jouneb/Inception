@@ -1,6 +1,6 @@
 #!/bin/bash
 
-service mysql start;
+service mysql start
 sleep 1
 mysql -e "CREATE DATABASE IF NOT EXISTS ${SQL_DATABASE};"
 #cree base de donnee, seulement si elle n'existe pas deja
