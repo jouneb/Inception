@@ -18,6 +18,7 @@ RUN chmod +x wp-cli.phar
 RUN mv wp-cli.phar /usr/local/bin/wp
 
 COPY conf/auto-config.sh /var/www/
+# COPY conf/wp-config.php /var/www/wordpress
 WORKDIR /var/www/wordpress
 
 CMD ["sh", "/var/www/auto-config.sh"]
