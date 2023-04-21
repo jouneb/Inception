@@ -35,7 +35,7 @@ services:
     container_name: wordpress
     env_file: .env
     volumes:
-      - wordpress:/var/wwww/wordpress
+      - wordpress:/var/www/wordpress
     networks:
       - inception
     build:
