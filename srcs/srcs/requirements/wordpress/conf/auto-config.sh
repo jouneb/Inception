@@ -11,7 +11,7 @@ then
     echo "wp-config-sample.php already exist..."
 else
     wp core --allow-root download
-    on configure wp et creation du wp-config.php
+    #on configure wp et creation du wp-config.php
     wp config create --allow-root \
                      --dbname=$SQL_DATABASE \
                      --dbuser=$SQL_USER \

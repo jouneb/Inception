@@ -21,4 +21,4 @@ COPY conf/auto-config.sh /var/www/
 # COPY conf/wp-config.php /var/www/wordpress
 WORKDIR /var/www/wordpress
 
-CMD ["sh", "/var/www/auto-config.sh"]
+ENTRYPOINT ["/var/www/auto-config.sh"]
